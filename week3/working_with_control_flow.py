@@ -109,12 +109,149 @@
 # '''
 
 # Iterates through each element in a STRING. Remember that strings are sequences or characters.
-word = "PYTHON"
-for char in word:
-    print(char)
+# word = "PYTHON"
+# for char in word:
+#     print(char)
+# '''
+# some usecases
+#     counting vowels/consonants.
+#     password validation (checking digis/special chars.
+#     text analysis, etc.
+# )'''
+
+# # 2. While loop
+# ''' A while loop is used to repeatedy execute a block of code
+#     as long as a given condition is true. Unlike the for loop
+#     (which iterates over sequences like lists, tuples, etc.), the
+#     while loop is condition-based.
+# '''
+# #while condition:
+#     #code block
+#     #The condition must evaluate to True for the loop to continue running
+#     #When the condition becomes False, the loop stops
+
+
+# #Using while loop
+# ## Documenting my thoughst##
+# #Let the loop start with count = 1
+# #Let it keep printing until count is greater than 5
+# #Let the loop terminate when the condition is no longer true
+
+# ##My code
+# count = 1
+# while count <= 5:
+#     print("Number:", count)
+#     count += 1
+
+# #Incrementing with 'while'
+# num = 1
+# while num <= 10:
+#     print(num, end=" ")
+#     num += 1
+
+# #Decrementing with 'while'
+# timer = 10
+# while timer > 0:
+#     print("Countdown:", timer)
+#     timer -= 1
+
+# # While with user input
+# ## keep asking until the user keeps a correct password.
+# password = ""
+# while password != "python123":
+#     password = input("Enter the password: ")
+# print("Access Granted")
+
+''' Understanding while True
+    The while True: loop is an infinite loop - it keeps running 
+    unitl you explicitly stop it with a break statement or by 
+    exiting the program.
+    It is commonly used when;
+    -you don't know in advance how many times you want the loop
+    to run
+    -you want to keep asking the user for input until a valid
+    condition is met.
+    -you are building continuous programs like menus, login
+    systems, or simulations.
 '''
-some usecases
-    counting vowels/consonants.
-    password validation (checking digis/special chars.
-    text analysis, etc.
-)'''
+# #while True:
+#     # Code  block
+#     # must include a break statement to stop
+
+# # keep asking the user for a name until they type "exit".
+# while True:
+#     name = input("Enter your name (type 'exit' to quit): ")
+#     if name.lower() == "exit":
+#         print("Goodbye!")
+#         break 
+#     print(f"Hello, {name}")
+
+''' Loop Control Statements (break, continue and pass)
+    These keywords help us control the behavior of loops (for
+    and while). Instead of loops always running all iterations, 
+    we can skip steps, stop early, or do noting intentionally.
+'''
+#1. break
+# stops loop immediately. It is used if a condition is met and 
+# there's no need to continue looping.
+for num in range(1,10):
+    if num == 5:
+        break 
+    print(num)
+
+#The loop stops completely when num ==5.
+#Stops searching when an item is found.
+#Exit when user input matches a condition.
+#Prevent unnecessary iterations.
+
+#2. continue
+# skips the current iteration and moves to the next one.
+# It is used if you want to ignore some values but keep the
+# loop running.
+for num in range(1,6):
+    if num == 3:
+        continue 
+    print(num)
+
+#3 is skipped, but the loop continues.
+
+## Some usecases
+#skip invalid data.
+#ignore unwanted characters (like spaces in a string)
+#continue running but avoid certain cases, etc.
+
+#3 Pass
+#does nothing. A placeholder to avoid errors. It is used if
+#you haven't written the code yet but you want to keep the 
+#structure
+for num in range(1, 6):
+    if num == 3:
+        pass    # do nothing for now
+    else:
+        print(num)
+
+# At num == 3, Python executes pass (nothing happens).
+
+## Some usecases
+# Writing code structure (to fill in later).
+# placeholders in class/method definitions
+# temporarily disable parts of code
+
+#Let's try while True again
+#Try and think through this...
+while True:
+    print("\nMenu:")
+    print("1. Say Hello")
+    print("2. Say Goodbye")
+
+    choice = input("choose an option: ")
+
+    if choice == "1":
+        print("Hello")
+    elif choice == "2":
+        print("Goodbye")
+    elif choice == "3":
+        print("Exiting program...")
+        break 
+    else:
+        print("Invalid choice. Try again.")
