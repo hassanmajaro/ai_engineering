@@ -162,18 +162,18 @@
 #     password = input("Enter the password: ")
 # print("Access Granted")
 
-''' Understanding while True
-    The while True: loop is an infinite loop - it keeps running 
-    unitl you explicitly stop it with a break statement or by 
-    exiting the program.
-    It is commonly used when;
-    -you don't know in advance how many times you want the loop
-    to run
-    -you want to keep asking the user for input until a valid
-    condition is met.
-    -you are building continuous programs like menus, login
-    systems, or simulations.
-'''
+# ''' Understanding while True
+#     The while True: loop is an infinite loop - it keeps running 
+#     unitl you explicitly stop it with a break statement or by 
+#     exiting the program.
+#     It is commonly used when;
+#     -you don't know in advance how many times you want the loop
+#     to run
+#     -you want to keep asking the user for input until a valid
+#     condition is met.
+#     -you are building continuous programs like menus, login
+#     systems, or simulations.
+# '''
 # #while True:
 #     # Code  block
 #     # must include a break statement to stop
@@ -186,72 +186,124 @@
 #         break 
 #     print(f"Hello, {name}")
 
-''' Loop Control Statements (break, continue and pass)
-    These keywords help us control the behavior of loops (for
-    and while). Instead of loops always running all iterations, 
-    we can skip steps, stop early, or do noting intentionally.
-'''
-#1. break
-# stops loop immediately. It is used if a condition is met and 
-# there's no need to continue looping.
-for num in range(1,10):
-    if num == 5:
-        break 
-    print(num)
+# ''' Loop Control Statements (break, continue and pass)
+#     These keywords help us control the behavior of loops (for
+#     and while). Instead of loops always running all iterations, 
+#     we can skip steps, stop early, or do noting intentionally.
+# '''
+# #1. break
+# # stops loop immediately. It is used if a condition is met and 
+# # there's no need to continue looping.
+# for num in range(1,10):
+#     if num == 5:
+#         break 
+#     print(num)
 
-#The loop stops completely when num ==5.
-#Stops searching when an item is found.
-#Exit when user input matches a condition.
-#Prevent unnecessary iterations.
+# #The loop stops completely when num ==5.
+# #Stops searching when an item is found.
+# #Exit when user input matches a condition.
+# #Prevent unnecessary iterations.
 
-#2. continue
-# skips the current iteration and moves to the next one.
-# It is used if you want to ignore some values but keep the
-# loop running.
-for num in range(1,6):
-    if num == 3:
-        continue 
-    print(num)
+# #2. continue
+# # skips the current iteration and moves to the next one.
+# # It is used if you want to ignore some values but keep the
+# # loop running.
+# for num in range(1,6):
+#     if num == 3:
+#         continue 
+#     print(num)
 
-#3 is skipped, but the loop continues.
+# #3 is skipped, but the loop continues.
 
 ## Some usecases
 #skip invalid data.
 #ignore unwanted characters (like spaces in a string)
 #continue running but avoid certain cases, etc.
 
-#3 Pass
-#does nothing. A placeholder to avoid errors. It is used if
-#you haven't written the code yet but you want to keep the 
-#structure
-for num in range(1, 6):
-    if num == 3:
-        pass    # do nothing for now
-    else:
-        print(num)
+# #3 Pass
+# #does nothing. A placeholder to avoid errors. It is used if
+# #you haven't written the code yet but you want to keep the 
+# #structure
+# for num in range(1, 6):
+#     if num == 3:
+#         pass    # do nothing for now
+#     else:
+#         print(num)
 
-# At num == 3, Python executes pass (nothing happens).
+# # At num == 3, Python executes pass (nothing happens).
 
 ## Some usecases
 # Writing code structure (to fill in later).
 # placeholders in class/method definitions
 # temporarily disable parts of code
 
-#Let's try while True again
-#Try and think through this...
-while True:
-    print("\nMenu:")
-    print("1. Say Hello")
-    print("2. Say Goodbye")
+##Let's try while True again
 
-    choice = input("choose an option: ")
+
+# #Try and think through this...
+# while True:
+#     print("\nMenu:")
+#     print("1. Say Hello")
+#     print("2. Say Goodbye")
+
+#     choice = input("choose an option: ")
+
+#     if choice == "1":
+#         print("Hello")
+#     elif choice == "2":
+#         print("Goodbye")
+#     elif choice == "3":
+#         print("Exiting program...")
+#         break 
+#     else:
+#         print("Invalid choice. Try again.")
+
+# '''     Menu
+#         1.  Say Hello
+#         2.  Say Goodbye
+#         3.  Exit
+# '''
+
+# # Try and use while True for validation
+# while True:
+#     age = input("Enter your age: ")
+#     if age.isdigit():
+#         print(f"Your age is {age}")
+#         break 
+#     else:
+#         print("Invalid input. Please enter a number.")
+
+# # Lets make a guess
+# secret = "python"
+# while True:
+#     guess = input("Guess the secret word: ")
+#     if guess.lower() == secret:
+#         print("Correct! You guess the word.")
+#         break 
+#     else:
+#         print("Wrong! Try again.")
+    
+#Do you remember this?
+balance = 1000
+while True:
+    print("\nATM Menu:")
+    print("1. Check Balance")
+    print("2. Withdraw")
+    print("3. Exit")
+
+    choice = input("Enter choice: ")
 
     if choice == "1":
-        print("Hello")
+        print(f"Your balance is: {balance}")
     elif choice == "2":
-        print("Goodbye")
+        amount = int(input("Enter withdrawal amount: "))
+        if amount <= balance:
+            balance -= amount 
+            print(f"Withdrawal successful. New balance: {balance}")
+        else:
+            print("Insufficient funds.")
     elif choice == "3":
-        print("Exiting program...")
+        print("Thank you for using our ATM. Goodbye!")
         break 
     else:
-        print("Invalid choice. Try again.")
+        print("Invalid option. Try again.")
