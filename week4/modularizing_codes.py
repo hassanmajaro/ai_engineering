@@ -263,14 +263,14 @@
             So you use it when you just want to show results to the 
         user. Example: printing menus, reports, or logs
 '''
-def greet(name):
-    print("Hello", name)
+# def greet(name):
+#     print("Hello", name)
 
-# Function call
-result = greet("Esther")
+# # Function call
+# result = greet("Esther")
 
-# You will notice that it did not store the name
-print("Result:", result)
+# # You will notice that it did not store the name
+# print("Result:", result)
 
 ''' When to use return, print(), and yield keywords inside a function
     b.  return
@@ -283,9 +283,135 @@ print("Result:", result)
         computation or storage. For example, math calculations, data 
         processing, formatting text.
 '''
-def add(a, b):
-    return a + b 
+# def add(a, b):
+#     return a + b 
 
-# Function call
-result = add(4, 6)
-print("The sum is:", result)
+# # Function call
+# result = add(4, 6)
+# print("The sum is:", result)
+
+# Note the output and compare it with that of print()
+
+''' 3.  Yield
+            This is used for producing a sequence (generators)
+            yield works like return, but instead of ending the function,
+        it pauses it and remembers its state.
+            next time you call it, it resumes from where it stopped.
+            this creates a generator
+            you can use it when working with large data or infinite sequences
+'''
+def count_up_to(n):
+    i = 1
+    while i <= n:
+        yield i         # puase and return i
+        i += 1
+
+# using the generator
+for number in count_up_to(5):
+    print(number)
+
+
+''' More on function arguments(types of arguments)
+        Functions can accept different types of arguments depending
+    on how we want to pass data. Understanding makes functions flexible
+    and powerful
+
+    1.  Positional Arguments
+            These are the most common
+            The order matters: values are assigned to parameters in the same
+        order as they appear
+            Think of it like lining up children in the same order as roll call
+'''
+# def introduce(name, track):
+#     print("My name is", name)
+#     print('I am learning', track, ".")
+
+# #function call
+# introduce("Ngozi", "AI Engineering")        # Correct order
+
+# #change the arrangment and watch the output
+
+# introduce("AI Engineering", "Ngozi")        # incorrect order, this will throw a semantic error
+''' 2.  Keyword Arguments
+            Here, you explicitly mention the parameter name when calling the function
+            Order doesn't matter, since Python knows which value goes where
+            Think of it like addressing an envelope by name instead of position in line
+'''
+# def introduce(name, track):
+#     print("My name is", name)
+#     print("I am learning", track, ".")
+
+# #function call
+# introduce(name = "Ngozi", track = "AI Engineering")
+
+# # change the arrangement and watch the output
+# introduce(track = "AI Engineering",  name = "Ngozi")        #here you notice that order does not batter
+
+''' 3.  Default Arguments
+            Here, you can give parameters a default value
+            Even if no value is provided when calling, the default is used.
+            Think of it like a restaurant menu where rice is served by default if you don't choose otherwise.
+'''
+# def introduce(name, track = "AI Engineering"):
+#     print("My name is", name)
+#     print("I am learning", track, ".")
+
+# # function call
+# # without specifying the default arguments, but watch the output
+# introduce("Paul")
+
+# # specifiying the default argument and watch the output
+
+# introduce("Tunji Paul", track = "AI Development")
+
+''' 4.  Varying Length Arguments
+            Sometimes we don't know how many arguments will be passed. Python
+        provides two special symbols(that is the asterisk)
+            single asterisk for non-keyword arguments or tuple (*args)
+            double asterisk for keywork arguments or dictionary (**kwargs)
+
+        a.  non-keyword (tuple)
+                collects extra positional arguments into a tuple
+                think of it like packing extra clothes into a bag
+'''
+
+def add_numbers(*args):
+    total = 0
+    for num in args:
+        total += num 
+    print("Sum:", total)
+
+# function call
+# take note of the output
+add_numbers(2, 4, 6)
+add_numbers(10, 20, 30, 40, 50)
+
+''' 4.  Varying Length Arguments
+            Sometimes we don't know how many arguments will be passed. Python
+        provides two special symbols(that is the asterisk)
+            single asterisk for non-keyword arguments or tuple (*args)
+            double asterisk for keywork arguments or dictionary (**kwargs)
+
+        a.  keyword arguments (dictionary)
+                collects extra keyword arguments into a dictionary
+                think of it like a labelled container where each item has a name tag
+'''
+# def student_details(**kwargs):
+#     for key, value in kwargs.items():
+#         print(key, ":", value)
+
+# # function call - take note of the output
+# student_details(name = "Peter", track = "AI Engineering", interest = "Block Chain")
+
+# Lets implement on full code
+
+# Define student profile function
+# Ensure to note the order of arrangment of the types of arguments used
+# This is how to arrange it if you are using everying or some of them together
+
+def participant_profile(name, age, track = "AI Development", *skills, **extra_info):
+    '''Generate a profile for a bootcamp participant usind different types of arguments'''
+    profile = f"\n--- Bootcamp Participant Profile ---\n"
+    profile += f"Name: {name}\n"
+    profile += f"Age: {age}\n"
+    profile += f"Track: {track}\n"
