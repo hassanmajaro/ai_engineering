@@ -1,5 +1,5 @@
 # my_modules/main.py
-import first 
+import first
 import second 
 
 # let's use the function in the first.py file
