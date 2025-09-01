@@ -1,5 +1,6 @@
 # Task 1
-# 1 Write a program to take a string input from the user and display it in uppercase
+# 1 Write a program to take a string input from the user and display it 
+# in uppercase
 name = input("Enter full name? ")
 
 print (f"The name of this user is {name.upper()}")
@@ -13,7 +14,8 @@ print(text[-1])
 
 
 
-# 3 Ask the user for their name and print "Hello, !" where is the user input
+# 3 Ask the user for their name and print "Hello, !" 
+# where is the user input
 name = input("Enter name: ")
 print(f"\"Hello {name}!\"")
 
@@ -33,7 +35,7 @@ print(given_word.replace("World", "Python"))
 
 
 # Task 2
-# 6. Check if a given string contains substing "python" (case-insensitive).
+# 6. Check if a given string contains substring "python" (case-insensitive).
 word = "Is python a lot?"
 print("python" in word)
 
@@ -92,6 +94,6 @@ print(fruit.count("a"))
 
 
 
-# Check if a given string starts with https://
+# 15 Check if a given string starts with https://
 link = "https://google.com"
 print(link.startswith("https://"))
