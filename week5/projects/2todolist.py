@@ -29,11 +29,11 @@ do list application, user input handling, list operations, and
  -Calling functions with user inputs
 """
 
-
-new = Path("workspace")
-new.mkdir(exist_ok=True)
-file_path = new / "to_do_list.txt"
-file_path.touch()
+def work_path():
+    folder_path = Path("workspace")
+    folder_path.mkdir(exist_ok=True)
+    file_path = folder_path / "to_do_list.txt"
+    return file_path
 
 tasks = []
 
@@ -41,45 +41,67 @@ tasks = []
 
 def add_task(task):
     tasks.append(task)
-    return f"Task {task} added"
+    return f"Task '{task}' added"
     
 
 def rm_task(task):
     if task in tasks:
         tasks.remove(task)
-        return f"Task {task} removed"
+        return f"Task '{task}' removed"
     return f"task not found"
 
-def dis_task(task):
-    for task in tasks:
-        print(task)
 
 
+def save_task(path):
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            f.write("To-do List\n")
+            for task in tasks:
+                f.write(f"{task}\n")
 
+def view_task(path):
+    if path.exists():
+        with open(path, "r", newline="", encoding="utf-8") as f:
+            return f.read()
+    return "No tasks yet"
+
+def load_task(path):
+    if path.exists():
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                tasks.append(line.strip())
+
+
+file_path = work_path()
 while True:
-    print("""1. Add Task
-    2. Remove Task
-    3. View Tasks
-    4. Close""")
+    print("""
+1. Add Task
+2. Remove Task
+3. View Tasks
+4. Close""")
 
     try:
         choice = int(input("input option: "))
         if choice == 1:
             to_add = input("Enter task to add: ")
             print(add_task(to_add))
+            save_task(file_path)
+
         elif choice == 2:
             to_rm = input("Enter task to remove: ")
             print(rm_task(to_rm))
+            save_task(file_path)
+
         elif choice == 3:
-            print(f"Tasks are: {dis_task}")
+            print(f"Tasks are {view_task(file_path)}")
+
         elif choice == 4:
             print("Exiting... Thank you")
             break 
         else:
             print("Invalid input")
             
-        with open(file_path, "r", newline="", encoding="utf-8") as f:
-            f.write(tasks)
+        
+           
 
     except ValueError as ve:
         print ("Error! Input the correct option", ve)
