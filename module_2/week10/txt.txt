@@ -1,0 +1,143 @@
+🧠 AI Engineering & Data Analysis — Exam Cheat Sheet
+🧩 NUMPY
+
+np.array() → create array
+
+ndim, shape, dtype, size → structure
+
+Arithmetic → elementwise: +, -, *, /
+
+Dot product: np.dot(A,B) or A @ B
+
+Broadcasting rule: “Match or stretch by 1 till they fit”
+
+Axis: axis=0 (column), axis=1 (row)
+
+np.mean(arr, axis=0) → mean per column
+
+np.linalg.eig(A) → eigenvalues & eigenvectors
+
+Equation: 
+𝐴𝑣=𝜆𝑣
+Av=λv
+
+Characteristic eqn: 
+det(𝐴−𝜆𝐼) = 0
+det(A−λI)=0
+
+🧮 MATRICES
+
+Addition/subtraction → same shape
+
+Multiplication → row × column
+
+Transpose → A.T
+
+Determinant → np.linalg.det(A)
+
+Inverse → np.linalg.inv(A)
+
+Identity → np.eye(n)
+
+Eigenvalue/vector → 
+𝐴𝑣=𝜆𝑣
+Av=λv
+
+📘 PANDAS
+
+pd.Series() → 1D data
+
+pd.DataFrame() → 2D data
+
+df.head(), df.tail(), df.info(), df.describe()
+
+Indexing: df['col'], df.loc[row_label, col_label], df.iloc[row_idx, col_idx]
+
+Cleaning:
+
+df.dropna() → remove missing rows
+
+df.fillna(value) → fill missing
+
+df.drop_duplicates()
+
+df.rename(columns={...})
+
+Grouping & Aggregation:
+
+df.groupby('col')['target'].mean()
+
+df.value_counts()
+
+df.sort_values(by='col', ascending=False)
+
+Correlation: df.corr() → +1 = strong pos, −1 = strong neg
+
+📊 STATISTICS
+
+Measures of Center
+
+Measure	Description	Best for
+Mean	Average	Symmetrical data
+Median	Middle value	Data with outliers
+Mode	Most frequent	Categorical data
+
+Measures of Spread
+
+Measure	Formula	Meaning
+Range	max − min	Simplest spread
+Variance	
+𝜎2=∑(𝑥𝑖−𝑥ˉ)2/𝑛 
+
+
+	Average squared deviation
+Std. Dev. 𝜎=𝜎2
+	​
+
+	Typical distance from mean
+Coeff. of Var.	(𝜎/𝑥ˉ)×100
+Spread as % of mean
+
+Correlation:
+
+𝑟=1
+r=1 → perfect +
+
+𝑟=0
+r=0 → no relation
+
+𝑟=−1
+r=−1 → perfect −
+
+Skewness:
+Right skew → mean > median
+Left skew → mean < median
+
+📈 DATA WRANGLING & ANALYSIS
+
+Inspect data
+
+df.info(), df.isna().sum(), df.describe()
+
+
+Clean data
+
+df['col'] = df['col'].fillna(df['col'].mean())
+df = df.drop_duplicates().reset_index(drop=True)
+
+
+Create new columns
+
+df['Total'] = df['Price'] * df['Units']
+
+
+Analyze
+
+df.groupby('City')['Revenue'].sum()
+df['Product'].value_counts()
+df.corr()
+
+
+Visualize
+
+df.groupby('Branch')['Revenue'].sum().plot(kind='bar')
