@@ -9,7 +9,7 @@ The system manages **books, members, staff, departments, and borrowing records**
 
 ---
 
-## ⚙️ Features
+## Features
 - Relational database schema with 7 interconnected tables.
 - Data imported from CSV files using `\COPY` and validated with constraints.
 <!-- - Python integration for:
