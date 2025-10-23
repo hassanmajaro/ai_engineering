@@ -43,6 +43,17 @@ def signUp(input: Simple):
     except Exception as e:
         raise HTTPException (status_code = 500, detail = str(e))
     
+class LoginRequest(BaseModel):
+    email: str = Field(..., example = "sam@gmail.com")
+    password: str = Field(..., example = "sam123")
+
+@app.post("/login")
+def login(input: LoginRequest):
+    try:
+        pass
+    except Exception as e:
+        raise HTTPException(status_code = 500, detail = str(e))
+    
 if __name__ == "__main__":
     uvicorn.run(app, host = "0.0.0.0", port = 8000)
     port = int(os.getenv("PORT", 8000))
