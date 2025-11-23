@@ -6,3 +6,5 @@ module_3/week11/backend_tut/.env
 alembic
 alembic.ini
 .vscode
+.gitignore
+.gitattributes
